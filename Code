@@ -1,0 +1,58 @@
+/*
+  Arduino sketch for an automatic watering system with 5 moisture sensors.
+  Moisture sensor produce an analog output bewtween 0 and 1023,
+  where 0 = dry and 1023 = pure water.
+*/
+
+int Pump = 2; //Output pin for the pump
+int sensor1 = A0; //sensor anolog input pins
+int sensor2 = A1;
+int sensor3 = A2;
+int sensor4 = A3;
+int sensor5 = A4;
+
+long a_minute_in_ms = 60000; //delay() works in miliseconds
+
+int moisture_threshold = 750; // At 750 it is getting dry
+
+void setup() {
+  pinMode(Pump,OUTPUT);
+  pinMode(sensor1,INPUT);
+  pinMode(sensor2,INPUT);
+  pinMode(sensor3,INPUT);
+  pinMode(sensor4,INPUT);
+  pinMode(sensor5,INPUT);
+}
+
+void loop() {
+  
+  //waters the plants for 60 seconds if dry
+  if(analogRead(sensor1) <= moisture_threshold){
+    digitalWrite(Pump, HIGH);
+    delay(a_minute_in_ms);
+    digitalWrite(Pump, LOW);
+  }
+  else if(analogRead(sensor2) <= moisture_threshold){
+    digitalWrite(Pump, HIGH);
+    delay(a_minute_in_ms);
+    digitalWrite(Pump, LOW);
+  }
+  else if(analogRead(sensor3) <= moisture_threshold){
+    digitalWrite(Pump, HIGH);
+    delay(a_minute_in_ms);
+    digitalWrite(Pump, LOW);
+  }
+  else if(analogRead(sensor4) <= moisture_threshold){
+    digitalWrite(Pump, HIGH);
+    delay(a_minute_in_ms);
+    digitalWrite(Pump, LOW);
+  }
+  else if(analogRead(sensor5) <= moisture_threshold){
+    digitalWrite(Pump, HIGH);
+    delay(a_minute_in_ms);
+    digitalWrite(Pump, LOW);
+  }
+  
+  delay(a_minute_in_ms * 60); //checks humidity and waits an hour
+
+}
